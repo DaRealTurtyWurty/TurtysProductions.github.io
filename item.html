@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>1.12.2 Item.java</title>
+        <link rel="stylesheet" href="../../../dictionaryStyle.css">
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li class="active"><a href="../../moddingdictionary.html" class="aactive">Modding Version Dictionaries</a></li>
+                <li class="active"><a href="../../minecraftmods.html" class="inactive">My Minecraft Mods</a></li>
+                <li class="active"><a href="../../../index.html" class="inactive">Home</a></li>
+            </ul>
+            <h1>Turty's Productions</h1>
+        </nav>
+        <section>
+                <p class="headingPara">Item.java methods and variables</p>
+                <h6>
+                    <ul>
+                        <br><h6><strong>addInformation</strong> is a <strong>public void</strong> so it does not return anything, 
+                            it is used for adding a tooltip to the item(a short description). 
+                            <strong>stack</strong> is the itemstack to add the tooltip to. 
+                            <strong>worldIn</strong> is the world that the stack is in. 
+                            <strong>tooltip</strong> allows you to then add a tooltip 
+                            using <strong>tooltip.add()</strong>. Finally 
+                            <strong>flagIn</strong> can be used to declare 
+                            whether it is an <code><strong>ADVANCED</strong></code> 
+                            tooltip or a <strong><code>NORMAL</strong></code> tooltip.</h6>
+                        <li class="items"><code>addInformation(ItemStackStack stack, World worldIn, List&lt;String&gt; tooltip, ITooltipFlag flagIn)</code></li>
+                        <hr>
+                        <br><br><h6><strong>canApplyAtEnchantingTable</strong> 
+                            is a <strong>public boolean</strong> so it returns 
+                            <strong>true</strong> or <strong>false</strong>, 
+                            it returns true if the enchantment can be applied to this item. <strong>stack </strong>
+                            is the itemstack to be enchanted. <strong>enchantment</strong> is the enchantment to be 
+                            applied. This method checks whether an item can be enchanted with a certain 
+                            enchantment. This applies specifically to enchanting an item in the 
+                            enchanting table and is called when retrieving the list of possible 
+                            enchantments for an item.</h6>
+                        <li class="items"><code>canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment)</code></li>
+                        <hr>
+                        <br><br><h6><strong>canDestroyBlockInCreative</strong> 
+                            is a <strong>public boolean</strong> so it returns 
+                            <strong>true</strong> or <strong>false</strong>, 
+                            it returns true if the given player can destroy 
+                            the specified block in creative mode with this item. 
+                            <strong>world</strong> is the world that the block is in. 
+                            <strong>pos</strong> is the position of the block in the world. 
+                            <strong>stack</strong> is the itemstack that can/cannot break the block. 
+                            <strong>player</strong> is the player that is trying to break the block.</h6>
+                        <li class="items"><code>canDestroyBlockInCreative(World world, BlockPos pos, ItemStack stack, EntityPlayer player)</code></li>
+                        <hr>
+                        <br><br><h6><strong>canDisableShield</strong> 
+                            is a <strong>public boolean</strong> so it returns 
+                            <strong>true</strong> or <strong>false</strong>, 
+                            it returns true if the item can disable a shield. 
+                            <strong>stack</strong> is the itemstack. 
+                            <strong>shield</strong> is the stack of the shield in question. 
+                            <strong>entity</strong> is the EntityLivingBase that is holding the shield. 
+                            <strong>attacker</strong> is the EntityLivingBase that is holding the itemstack.</h6>
+                        <li class="items"><code>canDisableShield(ItemStack stack, ItemStack shield, EntityLivingBase entity, EntityLivingBase attacker)</code></li>
+                        <hr>
+                        <br><br><h6><strong>canHarvestBlock</strong> 
+                            is a <strong>public boolean</strong> so it returns 
+                            <strong>true</strong> or <strong>false</strong>, 
+                            it returns true if the player can harvest a block with that itemstack. 
+                            <strong>blockIn</strong> is the state of the block that is in question.</h6>
+                        <li class="items"><code>canHarvestBlock(IBlockState blockIn)</code></li>
+                        <hr>
+                        <br><br><h6><strong>canHarvestBlock</strong> 
+                            is a <strong>public boolean</strong> so it returns 
+                            <strong>true</strong> or <strong>false</strong>, 
+                            it returns true if the player can harvest a block with that itemstack. 
+                            <strong>blockIn</strong> is the state of the block that is in question. 
+                            <strong>stack</strong> is the itemstack. This is the ItemStack sensitive
+                            version.
+                        </h6>
+                        <li class="items"><code>canHarvestBlock(IBlockState state, ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>canItemEditBlocks</strong> 
+                            is a <strong>public boolean</strong> so it returns 
+                            <strong>true</strong> or <strong>false</strong>, 
+                            it returns true if this item ignores other restrictions 
+                            on how a player can modify the world. 
+                            Forces <strong>EntityPlayer#canPlayerEdit</strong> to return true.</h6>
+                        <li class="items"><code>canItemEditBlocks()</code></li>
+                        <hr>
+                        <br><br><h6><strong>createEntity</strong> 
+                            is a <strong>public Entity</strong>, so should return a new entity 
+                            to replace the dropped item. Returning <strong>null </strong>
+                            here will not kill the <strong>EntityItem</strong> and will leave 
+                            it to function normally. Called when the item 
+                            is placed in a world. <strong>world</strong> is the world object. 
+                            <strong>location</strong> is the <strong>EntityItem</strong> object, and is useful 
+                            for getting the position of the entity. 
+                            <strong>itemStack</strong> is the current itemstack.</h6>
+                        <li class="items"><code>createEntity(World world, Entity location, ItemStack itemstack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>doesSneakBypassUse</strong> 
+                            is a <strong>public boolean</strong> so it returns 
+                            <strong>true</strong> or <strong>false</strong>, 
+                            it returns true if this item, when held, allows 
+                            sneak-clicks to pass through to the underlying block. 
+                            <strong>stack</strong> is the current itemstack. 
+                            <strong>world</strong> is the world. 
+                            <strong>pos</strong> is the block position in the world. 
+                            <strong>player</strong> is the player that is wielding the item.</h6>
+                        <li class="items"><code>doesSneakBypassUse(ItemStack stack, IBlockAccess world, BlockPos pos, EntityPlayer player)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getAnimationParameters</strong> 
+                            is a bit complex and is a <strong>public ImmutableMap&lt;String, ITimeValue&gt;</strong>. 
+                            All 3 parameters are <strong>final</strong> as <strong>ImmutableMap</strong>s can only have 
+                            contents that will never change. 
+                            <strong>stack</strong> is the current itemstack. 
+                            <strong>world</strong> is the world object. 
+                            <strong>entity</strong> is the <strong>EntityLivingBase</strong> that this animation is affecting. 
+                            It is used to retrieve parameters to an item animation 
+                            mechanism which is known as animation state machine or 
+                            ASM(not to be confused with the Advanced System Manager). 
+                            You can read about this in the Forge Docs 
+                            <a href="https://mcforge.readthedocs.io/en/latest/animation/intro/" class="hyperlink"><strong>here</strong></a> as it does 
+                            get very complex! It is mostly unused in forge, so it is 
+                            unlikely for the common user to ever need it, but it 
+                            is there just in case.</h6>
+                        <li class="items"><code>getAnimationParameters(ItemStack stack, World world, EntityLivingBase entity)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getArmorModel</strong> 
+                            is a <strong>public String</strong>, and is called by <strong>RenderBiped</strong> and 
+                            <strong>RenderPlayer</strong> to determine the armor texture that 
+                            should be use for the currently equipped item. 
+                            This will only be called on instances of <strong>ItemArmor</strong>. 
+                            It returns the path of texture to bind, or return 
+                            <strong>null</strong> to use the default path. 
+                            <strong>stack</strong> is the itemstack for the equipped armor. 
+                            <strong>entity</strong> is the entity that is wearing the armor. 
+                            <strong>slot</strong> is the <strong>EntityEquipmentSlot</strong> that the armor is in. 
+                            <strong>type</strong> is the subtype; can be <strong>null</strong> or <strong>"overlay"</strong>.</h6>
+                        <li class="items"><code>getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getContainerItem</strong> 
+                            is a <strong>public Item</strong> and gets 
+                            the item that is a container item, this means 
+                            that it has a crafting result for example. 
+                            This is the non-itemstack sensitive version. 
+                            This method is nullable which means that 
+                            it can return <strong>null</strong>, but 
+                            otherwise it returns the resulting Item.</h6>
+                        <li class="items"><code>getContainerItem()</code></li>
+                        <hr>
+                        <br><br><h6><strong>getContainerItem</strong> 
+                            is the itemstack sensitive version 
+                            of <strong> getContainerItem()</strong> and is a <strong>public ItemStack</strong>, 
+                            this means that it returns the resulting itemstack. 
+                            <strong>itemStack</strong> is the current itemstack.</h6>
+                        <li class="items"><code>getContainerItem(ItemStack itemStack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getCreativeTab</strong> 
+                            is a <strong>public CreativeTabs</strong> and 
+                            gets the <strong>CreativeTabs</strong> that 
+                            this item is displayed on. It returns the tab 
+                            for it to be displayed on.</h6>
+                        <li class="items"><code>getCreativeTab()</code></li>
+                        <hr>
+                        <br><br><h6><strong>getCreativeTabs</strong> 
+                            is a <strong>public CreativeTabs[]</strong>, so it 
+                            returns a list of all tabs that this item could 
+                            possibly be on. The method gets a list of tabs 
+                            that items belonging to this class can display on, 
+                            combined properly with <strong>getSubItems()</strong> allows for a 
+                            single item to span many sub-items across many tabs.</h6>
+                        <li class="items"><code>getCreativeTabs()</code></li>
+                        <hr>
+                    </ul>
+                </h6>
+            </section>
+            <footer>
+                Test
+            </footer>
+    </body>
+</html>
