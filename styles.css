@@ -89,9 +89,10 @@ section ul.versions {
     background: rgb(233, 233, 233);
 }
 
-nav li:hover {
-    float: right;
-    margin: 0px 20px 0px 0px;
-    padding: 0px 0px 0px 0px;
+nav li a.aactive:hover {
     color: rgb(124, 124, 124);
+}
+
+nav li a.inactive:hover {
+    color: rgb(153, 153, 153);
 }
