@@ -342,6 +342,294 @@
                             a <strong>set</strong> method.</h6>
                         <li class="items"><code>getItemStackLimit()</code></li>
                         <hr>
+                        <br><br><h6><strong>getItemUseAction</strong> 
+                            is a <strong>public EnumAction</strong> and returns the action 
+                            that specifies what animation to play when the items is being used. 
+                            <strong>stack</strong> is the item stack to apply the action to.</h6>
+                        <li class="items"><code>getItemUseAction(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getMaxDamage</strong> 
+                            is a <strong>public int</strong> and returns the 
+                            maximum damage(more commonly known as durability) that the item 
+                            can take as an integer. This method is deprecated and 
+                            you should use the ItemStack sensitive version. </h6>
+                        <li class="items"><code>getMaxDamage()</code></li>
+                        <hr>
+                        <br><br><h6><strong>getMaxDamage</strong> 
+                            is a <strong>public int</strong> and returns 
+                            the <strong>maxDamage</strong>(maxDurability) for this ItemStack. 
+                            Defaults to the maxDamage field in this item, but can be overridden 
+                            here for other sources such as NBT.  
+                            <strong>stack</strong> is the item stack that can be damaged.</h6>
+                        <li class="items"><code>getMaxDamage(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getMaxItemUseDuration</strong> 
+                            is used for getting the max number of times the item can be 
+                            used before consumed.  It is a <strong>public int</strong> and 
+                            therefore requires an integer to be returned. 
+                            <strong>stack</strong> is the itemstack to be used.</h6>
+                        <li class="items"><code>getMaxItemUseDuration(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getMetadata</strong> 
+                            converts the given ItemStack damage value into a metadata 
+                            value to be placed in the world when this Item is placed as 
+                            a Block (mostly used with <strong>ItemBlocks</strong>). 
+                            It is a <strong>public int</strong> as it returns an integer 
+                            value. <strong>damage</strong> is an integer value for the 
+                            current damage of the item.</h6>
+                        <li class="items"><code>getMetadata(int damage)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getMetadata</strong> 
+                            used to be 'display damage', but its really just 'aux' data 
+                            in the ItemStack, usually shares the same variable as damage. 
+                            <strong>stack</strong> is the ItemStack to get the metadata from. 
+                            It is a <strong>public int</strong> as it returns an integer 
+                            value of the damage.</h6>
+                        <li class="items"><code>getMetadata(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getNBTShareTag</strong> 
+                            can be overridden to change the NBT data being sent to the client. 
+                            You should <strong>ONLY</strong> override this when you have no other choice, 
+                            as this might change behavior client side! Note that this will sometimes be 
+                            applied multiple times, the following MUST be supported: 
+                            <strong>Item item = stack.getItem();</strong> 
+                            <strong>NBTTagCompound nbtShare1 = item.getNBTShareTag(stack);</strong> 
+                            <strong>stack.setTagCompound(nbtShare1);</strong> 
+                            <strong>NBTTagCompound nbtShare2 = item.getNBTShareTag(stack);</strong> assert 
+                            <strong>nbtShare1.equals(nbtShare2);</strong>. 
+                            It is a <strong>public NBTTagCompound</strong> as it returns the NBT tag. 
+                            <strong>stack</strong> is the stack to send the NBT tag for.</h6>
+                        <li class="items"><code>getNBTShareTag(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6>Firstly, an <strong>IItemPropertyGetter</strong> is just a function 
+                            that extracts a property from an itemstack(sort of like a lens). 
+                            This method just retrieves one of these 'lenses' by a <strong>ResourceLocation</strong> identifier. 
+                            This gets called to apply a property after the 'state' of the item has changed. 
+                            Some examples of this are the clock and bow where they both have different 'states', 
+                            so it set different icons depending on an external factor.  
+                            <strong>key</strong> is the resource location and is the identifier. 
+                            It is a <strong>public IItemPropertyGetter</strong> and must return a 
+                            new instance of <strong>IItemPropertyGetter</strong> and have the 
+                            <strong>apply</strong> method inside.</h6>
+                        <li class="items"><code>getPropertyGetter(ResourceLocation key)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getRarity</strong> 
+                            is a <strong>public EnumRarity</strong> and gets an item rarity 
+                            from <strong>EnumRarity</strong>, these rarities change the text 
+                            color to suit how rare the item is, such as an Enchanted Golden Apple. 
+                            <strong>stack</strong> is the item stack to get the rarity of.</h6>
+                        <li class="items"><code>getRarity(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getRGBDurabilityForDisplay</strong> 
+                            is a <strong>public int</strong> and returns a packed RGB value for 
+                            the durability color (0x00RRGGBB). This is used to render the durability 
+                            bar in the GUI. This defaults to a value based on the hue 
+                            scaled based on <strong>getDurabilityForDisplay</strong>, but can be overridden. 
+                            <strong>stack</strong> is the item stack to get the RGB durability display from.</h6>
+                        <li class="items"><code>getRGBDurabilityForDisplay(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getSmeltingExperience</strong> 
+                            determines the base experience for a player when they remove this 
+                            item from a furnace slot. This number must be between 0 and 1 for 
+                            it to be valid as it is <strong>public float</strong>. 
+                            This number will be multiplied by the stack size to get the total experience. 
+                            <strong>item</strong> is the item stack that the player is picking up.</h6>
+                        <li class="items"><code>getSmeltingExperience(ItemStack item)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getShareTag</strong> 
+                            is a <strong>public boolean</strong> and if this function 
+                            returns <strong>true</strong> (or the item is damageable), the 
+                            ItemStack's NBT tag will be sent to the client.</h6>
+                        <li class="items"><code>getShareTag()</code></li>
+                        <hr>
+                        <br><br><h6><strong>getSubItems</strong> 
+                            is a <strong>public void</strong> and therefore you cannot 
+                            return anything. However, it returns a list of items with the same ID, but 
+                            different meta (e.g. dye returns 16 items). <strong>tab</strong> is the Creative Tab 
+                            for these sub-items to be in. <strong>items</strong> is a list of non null 
+                            item stacks of the sub-items. This should not be used as it is totally 
+                            removed in version 1.13+, however it will still work. 
+                            It is known as bad practice to utilize it though.</h6>
+                        <li class="items"><code>getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getToolClasses</strong> 
+                            is a <strong>public Set&lt;String&gt;</strong> and returns a list of 
+                            string versions of tool classes such as <strong>"pickaxe"</strong>. 
+                            <strong>stack</strong> is the item stack to get the tool classes from.</h6>
+                        <li class="items"><code>getToolClasses(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getUnlocalizedName</strong> 
+                            is a <strong>public String</strong> and returns the unlocalized name 
+                            of this item for it to then be localized in the lang file.</h6>
+                        <li class="items"><code>getUnlocalizedName()</code></li>
+                        <hr>
+                        <br><br><h6><strong>getUnlocalizedName</strong> 
+                            is a <strong>public String</strong> and returns the unlocalized name 
+                            of this item for it to then be localized in the lang file. This version accepts an 
+                            <strong>ItemStack</strong> so different stacks can have different names based on their damage or NBT. 
+                            <strong>stack</strong> is the item stack to get the unlocalized name of.</h6>
+                        <li class="items"><code>getUnlocalizedName(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>getUnlocalizedNameInefficiently</strong> 
+                            is a <strong>public String</strong> and translates the unlocalized name 
+                            of this item, but without the <strong>.name</strong> suffix, so the translation 
+                            fails and the unlocalized name itself is returned. 
+                            <strong>stack</strong> is the item stack to get the unlocalized name of.</h6>
+                        <li class="items"><code>getUnlocalizedNameInefficiently(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>hasContainerItem</strong> 
+                            is a <strong>public boolean</strong> and should return <strong>true</strong> 
+                            if this <strong>Item</strong> has a container item (a.k.a. crafting result). 
+                            An example of this is the cake recipe where it gives you back the bucket from the bucket of milk. 
+                            This method is deprecated, so you should use the ItemStack sensitive version.</h6>
+                        <li class="items"><code>hasContainerItem()</code></li>
+                        <hr>
+                        <br><br><h6><strong>hasContainerItem</strong> 
+                            is the ItemStack sensitive version of <strong>hasContainerItem()</strong> and 
+                            returns <strong>true</strong> if this item has a 'container'. 
+                            <strong>stack</strong> is the current item stack.</h6>
+                        <li class="items"><code>hasContainerItem(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>hasCustomEntity</strong> 
+                            determines if this Item has a special entity for when they are in the world. 
+                            This is called when an <strong>EntityItem</strong> is spawned in the world, 
+                            if <strong>true</strong> and <strong>Item#createCustomEntity</strong> returns non-null, 
+                            the <strong>EntityItem</strong> will be destroyed and the new 
+                            Entity will be added to the world. <strong>stack</strong> is the 
+                            current item stack. This is a <strong>public boolean</strong>, and therefore 
+                            must return either <strong>true</strong> or <strong>false</strong>.</h6>
+                        <li class="items"><code>hasCustomEntity(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>hasCustomProperties</strong> 
+                            is a <strong>public boolean</strong>, and therefore must return 
+                            either <strong>true</strong> or <strong>false</strong>. 
+                            This will return <strong>true</strong> if this item has 
+                            an <strong>IItemPropertyGetter</strong> and therefore has different 'states'.</h6>
+                        <li class="items"><code>hasCustomProperties()</code></li>
+                        <hr>
+                        <br><br><h6><strong>hasEffect</strong> 
+                            is a <strong>public boolean</strong>, and therefore must return 
+                            either <strong>true</strong> or <strong>false</strong>. 
+                            It returns <strong>true</strong> if this item has an enchantment glint. 
+                            By default, this returns <strong>stack.isItemEnchanted()</strong>, but other 
+                            items can override it (for instance, written books always return true). 
+                            Note that if you override this method, you generally want to also call the 
+                            super version (on Item) to get the glint for enchanted items. 
+                            Of course, that is unnecessary if the overwritten version always returns true. 
+                            <strong>stack</strong> is the item stack to apply the enchantment glint to.</h6>
+                        <li class="items"><code>hasEffect(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>hitEntity</strong> 
+                            - Current implementations of this method in child classes do not use 
+                            the entry argument beside <strong>ev</strong>. They just raise the damage on the stack. 
+                            This is a <strong>public boolean</strong>, so it must return 
+                            either <strong>true</strong> or <strong>false</strong>. 
+                            If it returns <strong>true</strong>, the event will continue and the entity will be hit. 
+                            However if it returns <strong>false</strong> then the event will be cancelled and the entity will not be hit. 
+                            <strong>stack</strong> is the current item stack that is hitting the entity. 
+                            <strong>target</strong> is the <strong>EntityLivingBase</strong> that is hitting the entity. 
+                            <strong>attacker</strong> is the <strong>EntityLivingBase</strong> that is attacking the entity.</h6>
+                        <li class="items"><code>hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker)</code></li>
+                        <hr>
+                        <br><br><h6><strong>initCapabilities</strong> 
+                            is called from <strong>ItemStack.setItem</strong>, and will hold extra 
+                            data for the life of this ItemStack. This can be retrieved from <strong>stack.getCapabilities()</strong>. 
+                            The NBT can be <strong>null</strong> if this is not called from <strong>readNBT</strong> or 
+                            if the item stack that it is changing <strong><code>FROM</code></strong> is different 
+                            than this item, or the previous item had no capabilities. This is called <code><strong>BEFORE</code></strong> the 
+                            stacks item is set so you can use <strong>stack.getItem()</strong> to see 
+                            the <code><strong>OLD</code></strong> item. Remember that getItem <code><strong>CAN</code></strong> 
+                            return <strong>null</strong>. This method has the identifiers: <strong>public ICapabilityProvider</strong> and 
+                            returns a holder instance associated with this ItemStack where you can hold capabilities for
+                            the life of this item. <strong>stack</strong> is the item stack. 
+                            <strong>nbt</strong> is NBT of this item serialized, or <strong>null</strong>.</h6>
+                        <li class="items"><code>initCapabilities(ItemStack stack, NBTTagCompound nbt)</code></li>
+                        <hr>
+                        <br><br><h6><strong>isBeaconPayment</strong> 
+                            is a <strong>public boolean</strong> and returns <strong>true</strong> if 
+                            this Item can be used as a payment to activate the vanilla beacon. 
+                            <strong>stack</strong> is the item stack that is/isn't used as a payment.</h6>
+                        <li class="items"><code>isBeaconPayment(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>isBookEnchantable</strong> 
+                            is a <strong>public boolean</strong> and returns <strong>true</strong> 
+                            if the enchantment is allowed. It's use its to allow or forbid the 
+                            specific book/item combination as an anvil enchant. 
+                            <strong>stack</strong> is the current item stack. 
+                            <strong>book</strong> is an item stack of the book.</h6>
+                        <li class="items"><code>isBookEnchantable(ItemStack stack, ItemStack book)</code></li>
+                        <hr>
+                        <br><br><h6><strong>isDamageable</strong> 
+                            is a <strong>public boolean</strong> and returns <strong>true</strong> if 
+                            the item can be damaged(has durability that can be lost). </h6>
+                        <li class="items"><code>isDamageable()</code></li>
+                        <hr>
+                        <br><br><h6><strong>isDamaged</strong> 
+                            is a <strong>public boolean</strong> and returns <strong>true</strong> if 
+                            the item stack has already been damaged(lost durability). 
+                            This is only called if <strong>isDamageable()</strong> is <strong>true</strong>. 
+                            <strong>stack</strong> is the item stack that can is/is not damaged.</h6>
+                        <li class="items"><code>isDamaged(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>isEnchantable</strong> 
+                            is a <strong>public boolean</strong> and returns <strong>true</strong> if 
+                            the item stack can be enchanted. It also checks <strong>isDamagable()</strong> and if 
+                            it cannot be stacked. <strong>stack</strong> is the item stack that is/isn't enchantable. </h6>
+                        <li class="items"><code>isEnchantable(ItemStack stack)</code></li>
+                        <hr>
+                        <br><br><h6><strong>isFull3D</strong> 
+                            is a <strong>public boolean</strong> and returns <strong>true</strong> if 
+                            the item is rendered in full 3D when held.</h6>
+                        <li class="items"><code>isFull3D()</code></li>
+                        <hr>
+                        <br><br><h6><strong>isInCreativeTab</strong> 
+                            is a <strong>protected boolean</strong> and returns <strong>true</strong> if 
+                            the item is in a creative tab. </strong>targetTab</strong> is the 
+                            creative tab in question as it loops through all the creative tabs 
+                            and checks if it is in one.</h6>
+                        <li class="items"><code>isInCreativeTab(CreativeTabs targetTab)</code></li>
+                        <hr>
+                        <br><br><h6><strong>isMap</strong> 
+                            is a <strong>public boolean</strong> and returns <strong>false</strong> 
+                            unless the item is a sub-class of <strong>ItemMapBase</strong>. 
+                            This just tells the client that the player is holding a map.</h6>
+                        <li class="items"><code>isMap()</code></li>
+                        <hr>
+                        <br><br><h6><strong>isRepairable</strong> 
+                            is a <strong>public boolean</strong> and 
+                            returns <strong>true</strong> if the item is repairable. 
+                            This is called by <strong>CraftingManager</strong> to 
+                            determine if an item is reparable.</h6>
+                        <li class="items"><code>isRepairable()</code></li>
+                        <hr>
+                        <br><br><h6><strong>isShield</strong> 
+                            is a <strong>public boolean</strong> and returns <strong>true</strong> if 
+                            this item is considered a shield. 
+                            <strong>stack</strong> is the item stack that is/isn't a shield. 
+                            <strong>entity</strong> is the <strong>EntityLivingBase</strong> that is holding the stack.</h6>
+                        <li class="items"><code>isShield(ItemStack stack, EntityLivingBase entity)</code></li>
+                        <hr>
+                        <br><br><h6><strong>isValidArmor</strong> 
+                            is a <strong>public boolean</strong> and 
+                            returns <strong>true</strong> if the given <strong>ItemStack</strong> can 
+                            be inserted in an armor slot. This determines if the specific ItemStack 
+                            can be placed in the specified armor slot, for the entity. 
+                            <strong>stack</strong> is the item stack. 
+                            <strong>armorType</strong> is the armor slot to be verified. 
+                            <strong>entity</strong> is the entity trying to equip the armor. 
+                            Note that in 1.13 this changes to <strong>canEquip()</strong>.</h6>
+                        <li class="items"><code>isValidArmor(ItemStack stack, EntityEquipmentSlot armorType, Entity entity)</code></li>
+                        <hr>
+                        <br><br><h6><strong>itemInteractionForEntity</strong> 
+                            is a <strong>public boolean</strong> and 
+                            returns <strong>true</strong> if the item can be used on the 
+                            given entity, e.g. shears on sheep. <strong>stack</strong> is the 
+                            item stack to check for interactions with entities. 
+                            <strong>playerIn</strong> is the player that is trying to do the interaction. 
+                            <strong>target</strong> is the entity that the interaction is trying to be done on. 
+                            <strong>hand</strong> is the <strong>EnumHand</strong> that the stack is in.</h6>
+                        <li class="items"><code>itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand)</code></li>
+                        <hr>
                     </ul>
                 </h6>
             </section>
